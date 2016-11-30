@@ -1,0 +1,117 @@
+@import "fonts";
+@import "mixins";
+@import "normalize";
+@import "bootstrap_base";
+
+$font-stack: 'Monserrat', sans-serif;
+$relaudio-blue: #1200E7;
+$relaudio-white: #FFF;
+
+body {
+  font-family: $font-stack;
+  // background: url(../img/bg.svg) repeat-x;
+  // color: #1200E7;
+  // animation: backgroundScroll 125s linear infinite;
+}
+ 
+@keyframes backgroundScroll {
+from {background-position: 100vw 0;}
+to {background-position: -100vw 0;}
+}
+.svg-bg {
+  width: 100vw;
+  height: 100vh;
+}
+
+h5 {
+  color: #FFF;
+  display: inline;
+  font-size: 72px;
+  font-family: "Monserrat";
+  font-weight: 700;
+  width: auto;
+}
+
+
+h4 {
+  color: #FFF;
+  display: inline;
+  font-size: 72px;
+  font-family: "Monserrat";
+  font-weight: 400;
+  width: auto;
+}
+
+p {
+  font-size: 30px
+}
+
+#hero{
+  background-image:url(../img/gradient.png);
+  background-size:cover;
+  position:relative;
+  height:100vh;
+}
+
+.header{
+  position:absolute;
+  top:50%;
+  text-align:center;
+  width:100%;
+  color:$relaudio-blue;
+  font-size:36px;
+  -ms-transform: translate(0,-50%); /* IE 9 */
+    -webkit-transform: translate(0,-50%); /* Safari */
+    transform: translate(0,-50%);
+
+}
+
+#content{
+  padding:50px 50px;
+  text-align:center;
+  width:80%;
+  margin:0px auto;
+}
+
+#content h2{
+  margin:0px 0px 30px 0px;
+}
+
+#resources{
+  padding:100px 50px;
+  text-align:center;
+  width:100%;
+  margin:0px auto;
+  background-color:#78B2C3;
+}
+
+
+
+#footer{
+  padding:30px 0px;
+  text-align:center;
+  background:#ddd;
+}
+
+img.heroimg {
+  padding-bottom:30px;
+  max-width: 70vw
+}
+
+
+
+//We are addding all the club logos in a box
+
+img.clublogo {
+  display: inline;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.Score--bounce{
+  animation:Score-keyframes--bounce .8s ease-out
+}
+@keyframes Score-keyframes--bounce{
+  0%,to { transform:opacity(0) }
+  80% { transform:opacity(1)}
+}

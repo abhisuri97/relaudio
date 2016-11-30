@@ -1,0 +1,118 @@
+
+$slabel-theme: (
+  border: 0,
+  radius: 4px,
+  padding: 10px 15px,
+  font: 'Open Sans',
+  bg: #efefef,
+  label-bg: #efefef,
+  label-color: inherit,
+  error-color: #E82C0C,
+  placeholder-color: #B9E0D6,
+  success-color: #5C832F
+);
+
+@function slabel($key) {
+  @return map-get($slabel-theme, $key);
+}
+
+
+// Required Styles
+// ====================================
+
+.slabel {
+  display: inline-block;
+  max-width: 240px;
+  position: relative;
+  width: 100%;
+  font-family: slabel(font);
+}
+
+.slabel input {
+  appearance: none;
+  border: slabel(border);
+  border-radius: slabel(radius) - 1;
+  box-sizing: border-box;
+  display: inline-block;
+  outline: 0;
+  padding: slabel(padding);
+  transition: transform 225ms ease-in-out;
+  width: 100%;
+  background: slabel(bg);
+
+  &:empty:valid + label {
+    color: slabel(success-color) !important;
+  }
+
+  &:valid + label {
+    color: slabel(success-color) !important;
+  }
+
+  &:invalid {
+    background: slabel(error-color);
+    color: white;
+  }
+
+  &:invalid + label {
+    &:after { background: slabel(error-color); }
+    color: white;
+  }
+
+  @include placeholder { color: slabel(placeholder-color); }
+
+  + label {
+    border: slabel(border);
+    border-radius: slabel(radius);
+    box-sizing: border-box;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    padding: slabel(padding);
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateY(0);
+    transition: transform 225ms ease-in-out;
+    width: 100%;
+    color: slabel(label-color);
+
+    &:before,
+    &:after {
+      content: "";
+      position: absolute;
+      right: 0;
+      left: 0;
+      z-index: -1;
+      transition: transform 225ms ease-in-out;
+    }
+
+    &:before { transform: translateY(-100%); }
+
+    &:after {
+      border-radius: slabel(radius);
+      top: 0;
+      bottom: 0;
+      background: slabel(label-bg);
+    }
+  }
+}
+
+.slabel input:focus {
+  &:empty:valid + label {
+    color: slabel(success-color) !important;
+  }
+
+  &:invalid + label {
+    color: slabel(error-color);
+  }
+
+  + label {
+    border: slabel(border);
+    transform: translateY(-100%);
+
+    &:after {
+      transform: translateY(100%);
+    }
+  }
+}
