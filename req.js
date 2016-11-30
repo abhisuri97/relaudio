@@ -2,6 +2,7 @@ const rp = require('request-promise');
 const utf8 = require('utf8');
 const xml2js = require('xml2js-es6-promise');
 const clj_fuzzy = require('clj-fuzzy');
+
 function secondsToHms(d) {
   d = Number(d);
   var h = Math.floor(d / 3600);
@@ -9,6 +10,7 @@ function secondsToHms(d) {
   var s = Math.floor(d % 3600 % 60);
   return ((h > 0 ? h + ":" + (m < 10 ? "0" : "") : "") + m + ":" + (s < 10 ? "0" : "") + s); 
 }
+
 let errCount = 0
 function NoCaptionError(message) {
   this.name = 'NoCaptionError';
@@ -165,8 +167,6 @@ let getSimilarityArr = (vidObj, searchString) => {
     console.log(err.stack)
     return undefined
   })
-
-
 }
 
 export default function getSearchRes(searchString, vidString='') {
